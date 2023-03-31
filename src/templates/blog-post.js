@@ -13,9 +13,9 @@ import Hero from '../components/hero'
 import Tags from '../components/tags'
 import * as styles from './blog-post.module.css'
 
-class BlogPostTemplate extends React.Component {
+class PageTemplate extends React.Component {
   render() {
-    const post = get(this.props, 'data.contentfulBlogPost')
+    const post = get(this.props, 'data.contentfulPage')
     const previous = get(this.props, 'data.previous')
     const next = get(this.props, 'data.next')
     const plainTextDescription = documentToPlainTextString(
@@ -88,42 +88,23 @@ class BlogPostTemplate extends React.Component {
   }
 }
 
-export default BlogPostTemplate
+export default PageTemplate
 
 export const pageQuery = graphql`
-  query BlogPostBySlug(
+  query PageBySlug(
     $slug: String!
     $previousPostSlug: String
     $nextPostSlug: String
   ) {
-    contentfulBlogPost(slug: { eq: $slug }) {
-      slug
-      title
-      author {
-        name
-      }
-      publishDate(formatString: "MMMM Do, YYYY")
-      rawDate: publishDate
-      heroImage {
-        gatsbyImage(layout: FULL_WIDTH, placeholder: BLURRED, width: 1280)
-        resize(height: 630, width: 1200) {
-          src
-        }
-      }
-      body {
-        raw
-        
-      }
-      tags
-      description {
-        raw
-      }
-    }
-    previous: contentfulBlogPost(slug: { eq: $previousPostSlug }) {
+    contentfulPage(slug: { eq: $slug }) {
       slug
       title
     }
-    next: contentfulBlogPost(slug: { eq: $nextPostSlug }) {
+    previous: contentfulPage(slug: { eq: $previousPostSlug }) {
+      slug
+      title
+    }
+    next: contentfulPage(slug: { eq: $nextPostSlug }) {
       slug
       title
     }
