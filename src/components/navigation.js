@@ -15,11 +15,6 @@ const Navigation = () => (
           Home
         </Link>
       </li>
-      <li className={styles.navigationItem}>
-        <Link to="/blog/" activeClassName="active">
-          Blog
-        </Link>
-      </li>
     </ul>
   </nav>
 )
