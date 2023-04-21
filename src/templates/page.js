@@ -97,18 +97,18 @@ export default PageTemplate
 export const pageQuery = graphql`
   query PageBySlug(
     $slug: String!
-    $previousPostSlug: String
-    $nextPostSlug: String
+    $previousPageslug: String
+    $nextPageslug: String
   ) {
     contentfulPage(slug: { eq: $slug }) {
       slug
       title
     }
-    previous: contentfulPage(slug: { eq: $previousPostSlug }) {
+    previous: contentfulPage(slug: { eq: $previousPageslug }) {
       slug
       title
     }
-    next: contentfulPage(slug: { eq: $nextPostSlug }) {
+    next: contentfulPage(slug: { eq: $nextPageslug }) {
       slug
       title
     }

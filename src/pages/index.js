@@ -8,14 +8,14 @@ import ArticlePreview from '../components/article-preview'
 
 class RootIndex extends React.Component {
   render() {
-    const posts = get(this, 'props.data.allContentfulPage.nodes')
+    const pages = get(this, 'props.data.allContentfulPage.nodes')
 
     return (
       <Layout>
         <Hero
           // image={author.heroImage.gatsbyImage}
         />
-        <ArticlePreview posts={posts} />
+        <ArticlePreview pages={pages} />
       </Layout>
     )
   }
