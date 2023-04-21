@@ -1,92 +1,30 @@
 import React from 'react'
 import { 
-  // Link, 
   graphql 
 } from 'gatsby'
 import get from 'lodash/get'
-// import { renderRichText } from 'gatsby-source-contentful/rich-text'
-// import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer'
-// import { BLOCKS } from '@contentful/rich-text-types'
-// import { GatsbyImage, getImage } from 'gatsby-plugin-image'
-// import readingTime from 'reading-time'
 
 import Seo from '../components/seo'
 import Layout from '../components/layout'
 import Hero from '../components/hero'
-// import Tags from '../components/tags'
-// import * as styles from './blog-post.module.css'
 
 class PageTemplate extends React.Component {
   render() {
-    const post = get(this.props, 'data.contentfulPage')
-    // const previous = get(this.props, 'data.previous')
-    // const next = get(this.props, 'data.next')
-    // const plainTextDescription = documentToPlainTextString(
-    //   JSON.parse(post.description.raw)
-    // )
-    // const plainTextBody = documentToPlainTextString(JSON.parse(post.body.raw))
-    // const { minutes: timeToRead } = readingTime(plainTextBody)
-    
-    // const options = {
-    //   renderNode: {
-    //     [BLOCKS.EMBEDDED_ASSET]: (node) => {
-    //     const { gatsbyImage, description } = node.data.target
-    //     return (
-    //        <GatsbyImage
-    //           image={getImage(gatsbyImage)}
-    //           alt={description}
-    //        />
-    //      )
-    //     },
-    //   },
-    // };
+    const page = get(this.props, 'data.contentfulPage')
 
     return (
       <Layout location={this.props.location}>
         <Seo
-          title={post.title}
+          title={page.title}
           // description={plainTextDescription}
-          // image={`http:${post.heroImage.resize.src}`}
+          // image={`http:${page.heroImage.resize.src}`}
         />
         <Hero
-          image={post.heroImage?.gatsbyImage}
-          title={post.title}
-          content={post.description}
+          image={page.heroImage?.gatsbyImage}
+          title={page.title}
+          content={page.description}
         />
         page template
-        {/* <div className={styles.container}>
-          <span className={styles.meta}>
-            {post.author?.name} &middot;{' '}
-            <time dateTime={post.rawDate}>{post.publishDate}</time> –{' '}
-            {timeToRead} minute read
-          </span>
-          <div className={styles.article}>
-            <div className={styles.body}>
-              {post.body?.raw && renderRichText(post.body, options)}
-            </div>
-            <Tags tags={post.tags} />
-            {(previous || next) && (
-              <nav>
-                <ul className={styles.articleNavigation}>
-                  {previous && (
-                    <li>
-                      <Link to={`/blog/${previous.slug}`} rel="prev">
-                        ← {previous.title}
-                      </Link>
-                    </li>
-                  )}
-                  {next && (
-                    <li>
-                      <Link to={`/blog/${next.slug}`} rel="next">
-                        {next.title} →
-                      </Link>
-                    </li>
-                  )}
-                </ul>
-              </nav>
-            )}
-          </div>
-        </div> */}
       </Layout>
     )
   }
@@ -97,18 +35,8 @@ export default PageTemplate
 export const pageQuery = graphql`
   query PageBySlug(
     $slug: String!
-    $previousPageslug: String
-    $nextPageslug: String
   ) {
     contentfulPage(slug: { eq: $slug }) {
-      slug
-      title
-    }
-    previous: contentfulPage(slug: { eq: $previousPageslug }) {
-      slug
-      title
-    }
-    next: contentfulPage(slug: { eq: $nextPageslug }) {
       slug
       title
     }
