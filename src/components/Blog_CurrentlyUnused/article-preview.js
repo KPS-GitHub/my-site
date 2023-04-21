@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-import Container from './container'
+import Container from '../container'
 import * as styles from './article-preview.module.css'
 
 const ArticlePreview = ({ pages }) => {
