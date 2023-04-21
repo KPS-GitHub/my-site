@@ -5,17 +5,17 @@ import get from 'lodash/get'
 import Seo from '../components/seo'
 import Layout from '../components/layout'
 import Hero from '../components/hero'
-import ArticlePreview from '../components/article-preview'
+import ArticlePreview from '../components/Blog_CurrentlyUnused/article-preview'
 
 class BlogIndex extends React.Component {
   render() {
-    const posts = get(this, 'props.data.allContentfulPage.nodes')
+    const pages = get(this, 'props.data.allContentfulPage.nodes')
 
     return (
       <Layout location={this.props.location}>
         <Seo title="Page" />
         <Hero title="Page" />
-        <ArticlePreview posts={posts} />
+        <ArticlePreview pages={pages} />
       </Layout>
     )
   }
