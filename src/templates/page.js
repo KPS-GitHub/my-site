@@ -5,7 +5,7 @@ import get from 'lodash/get'
 import Seo from '../components/seo'
 import Layout from '../components/layout'
 import Hero from '../components/hero'
-import BasicContentSection from '../components/ContentSection/basicContentSection'
+import BasicContentSection from '../components/ContentSection/BasicContentSection'
 
 class PageTemplate extends React.Component {
   render() {
