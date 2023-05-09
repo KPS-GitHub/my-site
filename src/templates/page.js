@@ -5,7 +5,7 @@ import get from 'lodash/get'
 import Seo from '../components/seo'
 import Layout from '../components/layout'
 import Hero from '../components/hero'
-import BasicContentSection from '../components/ContentSection/BasicContentSection'
+import ContentSection from '../components/ContentSection/ContentSection'
 
 class PageTemplate extends React.Component {
   render() {
@@ -31,7 +31,7 @@ class PageTemplate extends React.Component {
           sections.map((sec, i) => {
             // console.log('sec: ', sec)
             return (
-              <BasicContentSection data={sec} />
+              <ContentSection data={sec} />
             )
           })}
       </Layout>
