@@ -8,7 +8,11 @@ const Bold = ({ children }) => <span className="bold">{children}</span>
 const Text = ({ children }) => <p className="align-center">{children}</p>
 
 const RichText = ({ richText }) => {
-  return <Wrap>{renderRichText(richText, options)}</Wrap>
+  return <Wrap>
+    {renderRichText(richText, options)}
+    {/* {console.log('richText from RichText component: ', richText)}
+    {console.log('options from RichText component: ', options)} */}
+    </Wrap>
 }
 
 export default RichText
@@ -23,6 +27,17 @@ const options = {
       return ( 
         <>
           <h2>Embedded Asset</h2>
+          <pre>
+            <code>{JSON.stringify(node, null, 2)}</code>
+          </pre>
+        </>
+      )
+    },
+    [BLOCKS.EMBEDDED_ENTRY]: (node) => {
+      // console.log('JSON.stringify(node,null,2) using node from BLOCKS.EMBEDDED_ENTRY: ', JSON.stringify(node,null,2))
+      return ( 
+        <>
+          <h2>Embedded Entry</h2>          
           <pre>
             <code>{JSON.stringify(node, null, 2)}</code>
           </pre>
