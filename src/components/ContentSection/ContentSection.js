@@ -5,7 +5,7 @@ import RichText from './RichText'
 
 const Wrap = styled.div``
 
-const BasicContentSection = ({ data }) => {
+const ContentSection = ({ data }) => {
     const title = get(data, 'title');
     const subtitle = get(data, 'subtitle');
     const richText = get(data, 'richText');
@@ -18,4 +18,4 @@ const BasicContentSection = ({ data }) => {
   );
 }
 
-export default BasicContentSection
+export default ContentSection
